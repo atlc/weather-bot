@@ -2,10 +2,15 @@ import { SlashCommandBuilder } from "discord.js";
 import config from "../../config";
 
 export default {
-    data: new SlashCommandBuilder().setName("weather").setDescription("Gets the current weather for your ZIP code"),
+    data: new SlashCommandBuilder()
+        .setName("weather")
+        .setDescription("Gets the current weather for your ZIP code")
+        .addStringOption((option) => option.setName("zip").setDescription("Your ZIP code (US only)").setRequired(true)),
     async execute(interaction: any) {
-        const zip = 35205;
+        const zip = interaction.options.getString("zip");
+
         const zipRes = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zip},US&appid=${config.weather.api_key}`);
+
         const { lat, lon } = await zipRes.json();
 
         if (!lat || !lon) {
