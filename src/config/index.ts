@@ -10,7 +10,9 @@ const discord = {
     guild_id: process.env.DISCORD_GUILD_ID as string,
 };
 
-const weather = {};
+const weather = {
+    api_key: process.env.OPENWEATHER_API_KEY as string,
+};
 
 export default {
     discord,
