@@ -10,11 +10,19 @@ const discord = {
     guild_id: process.env.DISCORD_GUILD_ID as string,
 };
 
+const mysql = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+};
+
 const weather = {
     api_key: process.env.OPENWEATHER_API_KEY as string,
 };
 
 export default {
     discord,
+    mysql,
     weather,
 };
